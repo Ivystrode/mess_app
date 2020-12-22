@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+    <head>
+
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <!-- SEMANTIC UI SCRIPTS -->
+        <script src="https://code.jquery.com/jquery-3.1.1.min.js" crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css">
+        <script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.js"></script>
+
+        <!-- BASE STYLES -->
+        <link rel="stylesheet" href="{% static 'css/base.css' %}">
+
+        <!-- PAGE SPECIFICS -->
+        <title>{% block title %}{% endblock %}</title>
+        {% block page_css %}{% endblock %}
+
+    </head>
+    <body>
+
+        <div class="ui inverted menu">
+
+            <div id="mainmenu" class="item ui inverted dropdown button">
+                <span class="text">Menu</span>
+                <div class="menu">
+                  <div class="item">
+                    <span class="text">Left</span>
+                    <div class="right menu">
+                      <div class="item">1</div>
+                      <div class="item">2</div>
+                      <div class="item">3</div>
+                    </div>
+                  </div>
+                  <div class="item">
+                    <span class="text">Right</span>
+                    <div class="right menu">
+                      <div class="item">1</div>
+                      <div class="item">2</div>
+                      <div class="item">3</div>
+                    </div>
+                  </div>
+                </div>
+            </div>
+
+            <a class="item">
+              Messages
+            </a>
+            <a class="item">
+              Friends
+            </a>
+        </div>
+        {% block content %}
+        {% endblock %}    
+        
+        
+        
+
+        
+    </body>
+
+    <script>
+        $('.ui.dropdown').dropdown();
+    </script>
+
+    <script src="{% static 'scripts/js/base.js' %}" async defer></script>
+    {% block page_script %}{% endblock %}
+
+</html>
