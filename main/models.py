@@ -18,6 +18,9 @@ class MenuItem(models.Model):
     type = models.CharField(max_length=30, choices=types)
     quantity = models.IntegerField(default=99) 
     
+    def __str__(self):
+        return self.item
+    
 # This will be an order "summary" relating to an individual member detailing the total
 # price of the order and when it was placed
 class MealOrder(models.Model):
@@ -36,13 +39,19 @@ class MealOrder(models.Model):
     class Meta:
         ordering = ['-time_placed']
         
+    def __str__(self):
+        return self.member.username + " " + str(self.id)
+        
  
 # This model represents each individual item that will be added to a meal
 # Therefore the MealOrder model has multiple of these "items" that build up to
 # represent the entire order
 class MealOrderItem(models.Model):
     item = models.CharField(max_length=30)
-    order = models.ForeignKey(MealOrder, on_delete=models.CASCADE, null=True) 
+    order = models.ForeignKey(MealOrder, on_delete=models.CASCADE, null=True, related_name="items") 
     price = models.FloatField()   
+    
+    def __str__(self):
+        return self.item + ": " + str(self.price)
 
     

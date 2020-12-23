@@ -38,32 +38,7 @@ function Copyright() {
 const footers = [
     {
         title: 'Ivystrode Ltd',
-        description: ['Team','History','Contact','Locations'],
-    },
-    {
-        title: 'Features',
-        description: [
-            'Stuff',
-            'Random',
-            'Others',
-            'More',
-        ],
-    },
-    {
-        title: 'Resources',
-        description: [
-            'Iron',
-            'Coal',
-            'Granite',
-        ]
-    },
-    {
-        title: 'Informations',
-        description: [
-            'Personal',
-            'Business',
-            'Other',
-        ]
+        description: ['Technology Solutions'],
     },
 ]
 

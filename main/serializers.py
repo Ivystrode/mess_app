@@ -15,9 +15,12 @@ class CreateMenuItemSerializer(serializers.ModelSerializer):
 
 
 class MealOrderSerializer(serializers.ModelSerializer):
+    items = serializers.StringRelatedField(many=True, read_only=True)
+    # items = serializers.DictField(child=serializers.CharField())
+    member = serializers.StringRelatedField(read_only=True)
     class Meta:
         model = MealOrder
-        fields = ('id','total_price','member','type','time_placed','notes','acknowledged')
+        fields = ('id','total_price','member','type','items','time_placed','notes','acknowledged')
         
 class CreateMealOrderSerializer(serializers.ModelSerializer):
     class Meta:

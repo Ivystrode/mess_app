@@ -10,7 +10,23 @@ import Footer from './footer';
 export default class HomePage extends Component {
     constructor(props) {
         super(props);
+        this.all_orders = Array;
         }
+    componentDidMount() {
+        // this fetches the Api data
+        // put a function like this on each page
+        // one to show all orders
+        // then on specific meal pages, to fetch the relevant menuitems
+        console.log("test")
+        const apiUrl = `http://127.0.0.1:8000/main/mealorders`
+        fetch(apiUrl)
+        .then((data) => data.json())
+        .then((orders) => {
+            console.log(orders)
+            console.log("wooffa")
+            this.all_orders = orders;
+        });
+    }
     render() {
         return (
         <Router>
