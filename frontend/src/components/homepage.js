@@ -2,6 +2,7 @@ import React, {Component} from "react";
 import BreakfastMenu from './breakfast'
 import LunchMenu from './lunch'
 import DinnerMenu from './dinner'
+import Orders from './mealorders'
 import { BrowserRouter as Router, Switch, Route, Link, Redirect } from "react-router-dom"
 import CreateMenuItemPage from "./create_menuitem_page";
 import Header from './header';
@@ -17,13 +18,11 @@ export default class HomePage extends Component {
         // put a function like this on each page
         // one to show all orders
         // then on specific meal pages, to fetch the relevant menuitems
-        console.log("test")
+        console.log("homepage mounted")
         const apiUrl = `http://127.0.0.1:8000/main/mealorders`
         fetch(apiUrl)
         .then((data) => data.json())
         .then((orders) => {
-            console.log(orders)
-            console.log("wooffa")
             this.all_orders = orders;
         });
     }
@@ -36,6 +35,9 @@ export default class HomePage extends Component {
                 <Route path="/breakfast" component={BreakfastMenu}></Route>
                 <Route path="/lunch" component={LunchMenu}></Route>
                 <Route path="/dinner" component={DinnerMenu}></Route>
+                <Route path="/orders">
+                    <Orders orders={Array(this.all_orders)}/>
+                </Route>
                 <Route path="/create" component={CreateMenuItemPage}></Route>
             </Switch>
             <Footer/>

@@ -7,5 +7,6 @@ urlpatterns = [
     path('breakfast', index),
     path('lunch', index),
     path('dinner', index),
+    path('orders', index),
     path('create', index),
 ]
