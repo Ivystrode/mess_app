@@ -71,6 +71,8 @@ export default class Orders extends Component {
 			<div>
 				THIS WILL BE REPLACED BY A LOADING THING
 				NEXT UP: IF TIME IS 0815 - 1230 SHOW LUNCH ORDERS, ETC FOR BFAST AND DINNER
+				ACTUALLY MAYBE IT SHOULD JUST SHOW ORDERS AND GROUP BY ACKNOWLEDGE/NOT ACK'D
+				SHOULD ADD A COMPLETED BOOLEAN AS WELL?
 				{this.state.orders.filter(allorder => allorder.type === "Dinner").map(order => (
                    <div key={order.id}>
 				   <p>Order number: {order.id}</p>
