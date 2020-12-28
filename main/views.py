@@ -6,11 +6,23 @@ from django.contrib import messages
 from django.core.mail import send_mail
 
 from rest_framework import generics, status
+from rest_framework.permissions import SAFE_METHODS, BasePermission, IsAdminUser, DjangoModelPermissionsOrAnonReadOnly, DjangoModelPermissions, IsAuthenticatedOrReadOnly
 from .models import *
 from .serializers import *
 
 from rest_framework.views import APIView
 from rest_framework.response import Response
+
+# permissions classes
+class MealOrderUserWritePermission(BasePermission):
+    message = 'Editing orders is possible only to the member who placed the order'
+    
+    def has_object_permission(self, request, view, obj):
+        
+        if request.method in SAFE_METHODS:
+            return True
+        
+        return obj.member == request.user # this returns false if the member the database says owns the order is not the logged in user
 
 
 # So these views allow us to view the objects in JSON format
@@ -18,6 +30,8 @@ from rest_framework.response import Response
 class MenuItemView(generics.ListCreateAPIView):
     """This shows all the menu items, in JSON format"""
     
+    # permission_classes = [IsAdminUser] # restricts this to admin only
+    permission_classes = [DjangoModelPermissions]
     queryset = MenuItem.objects.all()
     serializer_class = MenuItemSerializer
     
@@ -30,18 +44,26 @@ class MealOrderView(generics.ListCreateAPIView):
 class MealOrderItemView(generics.ListCreateAPIView):
     """This shows all the menu items, in JSON format"""
     
+    permission_classes = [IsAuthenticatedOrReadOnly]
     queryset = MealOrderItem.objects.all()
     serializer_class = MealOrderItemSerializer
+    
+    
+
     
 # These views are the detail views allowing us to view a single object
 # when the id is passed into the url bar (see urls.py)
 class MenuItemDetailView(generics.RetrieveDestroyAPIView):
     queryset = MenuItem.objects.all()
     serializer_class = MenuItemSerializer
-class MealOrderDetailView(generics.RetrieveDestroyAPIView):
+    
+class MealOrderDetailView(generics.RetrieveUpdateDestroyAPIView, MealOrderUserWritePermission):
+    permission_classes = [MealOrderUserWritePermission]
     queryset = MealOrder.objects.all()
     serializer_class = MealOrderSerializer
+    
 class MealOrderItemDetailView(generics.RetrieveDestroyAPIView):
+    permission_classes = [DjangoModelPermissions]
     queryset = MealOrderItem.objects.all()
     serializer_class = MealOrderItemSerializer
     

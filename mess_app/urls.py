@@ -19,5 +19,6 @@ from django.urls import path, include
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('main/', include('main.urls')),
+    path('main-auth/', include('rest_framework.urls', namespace='rest_framework')), # allows us to simulate a logged in user or use it to login a user from react
     path('', include('frontend.urls')),
 ]
