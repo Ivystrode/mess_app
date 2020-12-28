@@ -1,36 +1,42 @@
 import { Typography } from "@material-ui/core";
 import React, {Component} from "react";
+import { useForm, useFieldArray, useWatch } from 'react-hook-form';
 
-export default class LunchMenu extends Component {
-    constructor(props) {
-        super(props)
-        this.state = {
-            all_items: []
-        };
-        this.getItems()
-        }
+const BreakfastMenu = (props) => {
+    const { items } = props;
+    const {register, handleSubmit, errors} = useForm();
 
-    getItems() {
-        console.log("test")
-        const apiUrl = `http://127.0.0.1:8000/main/menuitems`
-        fetch(apiUrl)
-        .then((data) => data.json())
-        .then((items) => {
-            this.setState({
-                all_items: items
+    var d = new Date()
+    var days = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday']
+    var today = days[d.getDay()]
+
+    const onSubmit = (order) => {
+        console.log("Breakfast order placed")
+        console.log(order)
+    }
+
+
+    console.log("Breakfast menu")
+    console.log(props)
+    if (!items || items.length === 0) return <p>Updating menu...</p>;
+    return (
+        <form onSubmit={handleSubmit(onSubmit)}>
+            <h2>{today} Breakfast Menu</h2>
+            {items
+            .filter(unsorteditem => unsorteditem.type === "Breakfast").map(item => {
+                return (
+                    <div key={item.id}>
+                        <label>{item.item} - {item.price}</label>
+                        <input type="checkbox" ref={register} name={item.item}/>
+                    </div>
+                )
             })
-        });
-    }
+            }
+            <input type="Submit" value="Submit order"/>
+        </form>
+        
+    )
 
-    render() {
-        return (
-            <div>
-                {this.state.all_items.filter(unsorteditem => unsorteditem.type === "Breakfast").map(item =>
-                <div key={item.id}>
-                    <p>{item.item}: {item.type}</p>
-                </div>
-                    )}
-            </div>         
-        ) 
-    }
 }
+
+export default BreakfastMenu;
