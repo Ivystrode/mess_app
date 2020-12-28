@@ -38,7 +38,7 @@ function Copyright() {
 const footers = [
     {
         title: 'Ivystrode Ltd',
-        description: ['Technology Solutions'],
+        // description: ['Technology Solutions'],
     },
 ]
 
@@ -53,7 +53,7 @@ function Footer() {
                             <Typography variant="h6" color="textPrimary" gutterBottom>
                                 {footer.title}
                             </Typography>
-                            <ul>
+                            {/* <ul>
                                 {footer.description.map((item) => (
                                     <li key={item}>
                                         <Link href="#" variant="subtitle1" color="textSecondary">
@@ -61,7 +61,7 @@ function Footer() {
                                         </Link>
                                     </li>
                                 ))}
-                            </ul>
+                            </ul> */}
                         </Grid>
                     ))}
                 </Grid>

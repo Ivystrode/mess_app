@@ -17,10 +17,6 @@ export default class HomePage extends Component {
         }
     }
     componentDidMount() {
-        // this fetches the Api data
-        // put a function like this on each page
-        // one to show all orders
-        // then on specific meal pages, to fetch the relevant menuitems
         console.log("homepage mounted")
         const mealorders_api = `http://127.0.0.1:8000/main/mealorders`
         fetch(mealorders_api)
@@ -60,7 +56,7 @@ export default class HomePage extends Component {
                 </Route>
 
                 <Route path="/orders">
-                    <Orders orders={Array(this.state.all_orders)}/>
+                    <Orders orders={this.state.all_orders}/>
                 </Route>
 
                 <Route path="/create" component={CreateMenuItemPage}></Route>
