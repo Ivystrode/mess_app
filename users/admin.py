@@ -6,7 +6,7 @@ from .models import *
 # Register your models here.
 
 # Re-register UserAdmin
-admin.site.unregister(User)
-admin.site.register(User, UserAdmin)
+# admin.site.unregister(User)
+admin.site.register(NewUser)
 
 # ^^^ makes the "profile" details appear on the main user page of admin panel

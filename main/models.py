@@ -1,6 +1,7 @@
 from django.db import models
 from django.utils import timezone
 from django.contrib.auth.models import User
+from django.conf import settings
 import uuid
 
 # Create your models here.
@@ -30,7 +31,7 @@ class MealOrder(models.Model):
         ("Dinner", "Dinner")
     )    
     total_price = models.FloatField()
-    member = models.ForeignKey(User, on_delete=models.CASCADE)
+    member = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     type = models.CharField(max_length=30, choices=types)
     time_placed = models.DateTimeField(default=timezone.localtime(timezone.now()))
     notes = models.CharField(max_length=50)

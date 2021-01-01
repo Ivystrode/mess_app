@@ -43,7 +43,8 @@ INSTALLED_APPS = [
     'main.apps.MainConfig',
     'rest_framework',
     'frontend.apps.FrontendConfig',
-    'corsheaders'
+    'corsheaders',
+    'users',
 ]
 
 MIDDLEWARE = [
@@ -146,10 +147,15 @@ MEDIA_URL = '/media/'
 
 REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES' : [
-        'rest_framework.permissions.IsAuthenticatedOrReadOnly' # AllowAny, IsAuthenticated, IsAdminUser, IsAuthenticatedOrReadOnly
-    ]
+        'rest_framework.permissions.AllowAny' # AllowAny, IsAuthenticated, IsAdminUser, IsAuthenticatedOrReadOnly
+    ],
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
+    ),
 }
 
 CORS_ALLOWED_ORIGINS = [
     "http://127.0.0.1:8000"
 ]
+
+AUTH_USER_MODEL = 'users.NewUser'
