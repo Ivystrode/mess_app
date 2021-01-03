@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'frontend.apps.FrontendConfig',
     'corsheaders',
     'users',
+    'rest_framework_simplejwt.token_blacklist',
 ]
 
 MIDDLEWARE = [

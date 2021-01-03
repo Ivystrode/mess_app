@@ -8,6 +8,8 @@ import CreateMenuItemPage from "./create_menuitem_page";
 import Header from './header';
 import Footer from './footer';
 import Register from './register';
+import Login from './login';
+import Logout from './logout';
 
 export default class HomePage extends Component {
     constructor(props) {
@@ -46,6 +48,14 @@ export default class HomePage extends Component {
 
                 <Route path="/register" component={Register}>
                     <Register/>
+                </Route>
+
+                <Route path="/login" component={Login}>
+                    <Login/>
+                </Route>
+
+                <Route path="/logout" component={Logout}>
+                    <Logout/>
                 </Route>
 
                 <Route path="/breakfast" component={BreakfastMenu}>

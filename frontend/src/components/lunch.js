@@ -15,7 +15,8 @@ const LunchMenu = (props) => {
         console.log(order)
     }
 
-
+    console.log("User:")
+    console.log(JSON.parse(localStorage.getItem('user')))
     console.log("Lunch menu")
     console.log(props)
     if (!items || items.length === 0) return <p>Updating menu...</p>;

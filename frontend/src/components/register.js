@@ -13,6 +13,7 @@ import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
+import { InputLabel, MenuItem, Select } from '@material-ui/core';
 
 const useStyles = makeStyles((theme) => ({
 	paper: {
@@ -98,16 +99,20 @@ export default function Register() {
 							/>
 						</Grid>
 						<Grid item xs={12}>
-							<TextField
-								variant="outlined"
-								required
-								fullWidth
-								id="rank"
-								label="Rank"
-								name="rank"
-								autoComplete="rank"
-								onChange={handleChange}
-							/>
+							<InputLabel>Rank</InputLabel>
+							<Select
+							labelId="rank"
+							// value={formData.rank}
+							name="rank"
+							// id="rank"
+							onChange={handleChange}>
+								<MenuItem value="2Lt">2Lt</MenuItem>
+								<MenuItem value="Lt">Lt</MenuItem>
+								<MenuItem value="Capt">Capt</MenuItem>
+								<MenuItem value="Maj">Maj</MenuItem>
+								<MenuItem value="Lt Col">Lt Col</MenuItem>
+								<MenuItem value="Guest">Guest</MenuItem>
+							</Select>
 						</Grid>
 						<Grid item xs={12}>
 							<TextField

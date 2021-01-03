@@ -10,4 +10,6 @@ urlpatterns = [
     path('orders', index),
     path('create', index),
     path('register', index),
+    path('login', index),
+    path('logout', index),
 ]

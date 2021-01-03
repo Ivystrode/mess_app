@@ -7,6 +7,7 @@ import Button from '@material-ui/core/Button'
 import Typography from '@material-ui/core/Typography';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import { makeStyles } from '@material-ui/core/styles';
+import { NavLink } from 'react-router-dom';
 
 const useStyles = makeStyles((theme) => ({
     appBar : {
@@ -50,8 +51,9 @@ function Header() {
                         Menu
                     </Button>
                     <Menu id="main-menu" anchorEl={anchorEl} keepMounted open={Boolean(anchorEl)} onClose={handleClose}>
-                        <MenuItem onClick={handleClose}>Log In</MenuItem>
-                        <MenuItem onClick={handleClose}>Register</MenuItem>
+                        <MenuItem href="#" component={NavLink} to='/login'>Log In</MenuItem>
+                        <MenuItem href="#" component={NavLink} to='/logout'>Log Out</MenuItem>
+                        <MenuItem href="#" component={NavLink} to='/register'>Register</MenuItem>
                     </Menu>
                 </Toolbar>
                 
