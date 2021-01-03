@@ -23,6 +23,7 @@ from rest_framework_simplejwt.views import (
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('main/', include('main.urls')),
+    path('main/user/', include('users.urls', namespace='users')),
     path('main-auth/', include('rest_framework.urls', namespace='rest_framework')), # allows us to simulate a logged in user or use it to login a user from react
     path('main/token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
     path('main/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),

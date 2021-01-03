@@ -9,4 +9,5 @@ urlpatterns = [
     path('dinner', index),
     path('orders', index),
     path('create', index),
+    path('register', index),
 ]

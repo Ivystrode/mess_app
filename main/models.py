@@ -33,7 +33,7 @@ class MealOrder(models.Model):
     total_price = models.FloatField()
     member = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     type = models.CharField(max_length=30, choices=types)
-    time_placed = models.DateTimeField(default=timezone.localtime(timezone.now()))
+    time_placed = models.DateTimeField(default=timezone.localtime(timezone.now())) # apparently remove the () after timezone.now otherwise we get the time the server loaded instead of time model is made (as the parentheses CALL the function!)
     notes = models.CharField(max_length=50)
     acknowledged = models.BooleanField(default=False) # the staff will set this to TRUE when they receive the order
 

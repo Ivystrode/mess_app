@@ -31,7 +31,7 @@ class MenuItemView(generics.ListCreateAPIView):
     """This shows all the menu items, in JSON format"""
     
     # permission_classes = [IsAdminUser] # restricts this to admin only
-    permission_classes = [DjangoModelPermissions]
+    permission_classes = [IsAuthenticatedOrReadOnly]
     queryset = MenuItem.objects.all()
     serializer_class = MenuItemSerializer
     

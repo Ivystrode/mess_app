@@ -7,6 +7,7 @@ import { BrowserRouter as Router, Switch, Route, Link, Redirect } from "react-ro
 import CreateMenuItemPage from "./create_menuitem_page";
 import Header from './header';
 import Footer from './footer';
+import Register from './register';
 
 export default class HomePage extends Component {
     constructor(props) {
@@ -42,6 +43,10 @@ export default class HomePage extends Component {
             <Header/>
             <Switch>
                 <Route exact path="/"><h1>This is the home page</h1></Route>
+
+                <Route path="/register" component={Register}>
+                    <Register/>
+                </Route>
 
                 <Route path="/breakfast" component={BreakfastMenu}>
                     <BreakfastMenu items={this.state.all_menuitems}/>
