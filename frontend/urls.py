@@ -8,6 +8,8 @@ urlpatterns = [
     path('lunch', index),
     path('dinner', index),
     path('orders', index),
+    path('order/<int:pk>', index),
+    # path('orders/<int:pk>', index),
     path('create', index),
     path('register', index),
     path('login', index),

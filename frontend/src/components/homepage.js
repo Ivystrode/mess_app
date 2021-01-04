@@ -10,6 +10,7 @@ import Footer from './footer';
 import Register from './register';
 import Login from './login';
 import Logout from './logout';
+import Single from './single';
 
 export default class HomePage extends Component {
     constructor(props) {
@@ -73,6 +74,8 @@ export default class HomePage extends Component {
                 <Route path="/orders">
                     <Orders orders={this.state.all_orders}/>
                 </Route>
+
+                <Route path="/order/:id" component={Single} />
 
                 <Route path="/create" component={CreateMenuItemPage}></Route>
             </Switch>

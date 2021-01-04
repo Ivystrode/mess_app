@@ -41,7 +41,7 @@ class MealOrder(models.Model):
         ordering = ['-time_placed']
         
     def __str__(self):
-        return self.member.username + " " + str(self.id)
+        return self.member.surname + " " + str(self.id)
         
  
 # This model represents each individual item that will be added to a meal

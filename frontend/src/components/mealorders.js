@@ -6,6 +6,7 @@ import CardMedia from '@material-ui/core/CardMedia';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import Container from '@material-ui/core/Container';
+import Link from '@material-ui/core/Link';
 
 const useStyles = makeStyles((theme) => ({
 	cardMedia: {
@@ -117,6 +118,16 @@ const Orders = (props) => {
 							// Enterprise card is full width at sm breakpoint
 							<Grid item key={order.id} xs={12} md={4}>
 								<h2>Incomplete Orders:</h2>
+								<Link
+									color="textPrimary"
+									href={'order/' + order.id}
+									>
+										<CardMedia
+										className={classes.cardMedia}
+										image="https://source.unsplash.com/random"
+										title="Image title..."
+										/>
+									</Link>
 								<Card className={classes.card}>
 									<CardContent className={classes.cardContent}>
 
