@@ -6,7 +6,7 @@ from django.contrib import messages
 from django.core.mail import send_mail
 
 from rest_framework import generics, status, viewsets
-from rest_framework.permissions import SAFE_METHODS, BasePermission, IsAdminUser, DjangoModelPermissionsOrAnonReadOnly, DjangoModelPermissions, IsAuthenticatedOrReadOnly
+from rest_framework.permissions import SAFE_METHODS, BasePermission, IsAdminUser, DjangoModelPermissionsOrAnonReadOnly, DjangoModelPermissions, IsAuthenticatedOrReadOnly, AllowAny
 from .models import *
 from .serializers import *
 
@@ -32,7 +32,7 @@ class MealOrderUserWritePermission(BasePermission):
     
 class MenuItemList(viewsets.ModelViewSet):    
     # Technically this is all that is needed:
-    permission_classes = [IsAuthenticatedOrReadOnly]
+    permission_classes = [AllowAny]
     serializer_class = MenuItemSerializer
     queryset = MenuItem.objects.all()
     # --------------------------------------

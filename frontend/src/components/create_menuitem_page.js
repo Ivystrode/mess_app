@@ -1,8 +1,8 @@
 import React, {Component} from "react";
-import Button from "@material-ui/core/button";
-import Grid from "@material-ui/core/grid";
-import Typography from "@material-ui/core/typography";
-import Textfield from "@material-ui/core/Textfield";
+import Button from "@material-ui/core/Button";
+import Grid from "@material-ui/core/Grid";
+import Typography from "@material-ui/core/Typography";
+import TextField from "@material-ui/core/TextField";
 import FormHelperText from "@material-ui/core/FormHelperText";
 import FormControl from "@material-ui/core/FormControl";
 import Radio from "@material-ui/core/Radio";
@@ -71,7 +71,7 @@ export default class CreateMenuItem extends Component {
         }
 
         // once we get a response then convert it into json then print it out
-        fetch('/main/create-menu-item', requestOptions).then((response) =>
+        fetch('/main/menuitems/', requestOptions).then((response) =>
         response.json()
         ).then((data) => console.log(data))
     }
@@ -118,7 +118,7 @@ export default class CreateMenuItem extends Component {
 
             <Grid item xs={12} align="center">
                 <FormControl>
-                    <Textfield 
+                    <TextField 
                     required={true} 
                     onChange = {this.handleItemChange}
                     type="text" 
@@ -135,7 +135,7 @@ export default class CreateMenuItem extends Component {
 
             <Grid item xs={12} align="center">
                 <FormControl>
-                    <Textfield 
+                    <TextField 
                     onChange={this.handlePriceChange}
                     required={true} 
                     type="number" 
@@ -152,7 +152,7 @@ export default class CreateMenuItem extends Component {
 
             <Grid item xs={12} align="center">
                 <FormControl>
-                    <Textfield 
+                    <TextField 
                     required={true} 
                     onChange={this.handleQuantityChange}
                     type="number" 
