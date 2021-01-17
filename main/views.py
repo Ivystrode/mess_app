@@ -51,7 +51,7 @@ class MenuItemList(viewsets.ModelViewSet):
     #     return MenuItem.objects.all()
     
 class MealOrderList(viewsets.ModelViewSet):
-    permission_classes = [IsAuthenticatedOrReadOnly]
+    permission_classes = [AllowAny]
     serializer_class = MealOrderSerializer
     queryset = MealOrder.objects.all()
 
@@ -63,7 +63,7 @@ class MealOrderList(viewsets.ModelViewSet):
     #     return MenuItem.objects.all()
     
 class MealOrderItemList(viewsets.ModelViewSet):
-    permission_classes = [IsAuthenticatedOrReadOnly]
+    permission_classes = [AllowAny]
     serializer_class = MealOrderItemSerializer
     queryset = MealOrderItem.objects.all()
 

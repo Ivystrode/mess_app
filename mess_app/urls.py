@@ -15,6 +15,8 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from rest_framework.schemas import get_schema_view
+from rest_framework.documentation import include_docs_urls
 from rest_framework_simplejwt.views import (
     TokenObtainPairView,
     TokenRefreshView,
@@ -28,4 +30,10 @@ urlpatterns = [
     path('main/user/', include('users.urls', namespace='users')),
     path('main-auth/', include('rest_framework.urls', namespace='rest_framework')), # allows us to simulate a logged in user or use it to login a user from react
     path('', include('frontend.urls')),
+    path('docs/', include_docs_urls(title="29MessAPI")),
+    path('schema', get_schema_view(
+        title="29 Mess App",
+        description="API for meal orders and items",
+        version="0.1"
+    ), name="openapi-schema"),
 ]
